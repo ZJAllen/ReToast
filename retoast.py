@@ -30,6 +30,17 @@ plt.legend(loc=(1.04, 0.5))
 plt.tight_layout()
 plt.show()
 
+startTime = time.time()
+
+for i in range(0, temp.x[-1], 1):
+    elapsedTime = int(time.time() - startTime)
+    currentTemp.x.append(elapsedTime)
+
+    tempC = max31855.temperature
+    currentTemp.y.append(tempC)
+    time.sleep(1)
+
+
 def animate(i):
     elapsedTime = int(time.time() - startTime)
     currentTemp.x.append(elapsedTime)
@@ -39,10 +50,11 @@ def animate(i):
 
     plt.cla()
     plt.tight_layout()
+    plt.plot(temp.x, temp.y, label='Target Temperature')
     plt.plot(currentTemp.x, currentTemp.y, label='Current Temperature')
 
 
-ani = FuncAnimation(plt.gcf(), animate, interval=1000)
+#ani = FuncAnimation(plt.gcf(), animate, interval=1000)
 
 
 
