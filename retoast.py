@@ -42,8 +42,7 @@ def animate(i):
 ani = FuncAnimation(plt.gcf(), animate, interval=1000)
 
 plt.legend(loc=(1.04, 0.5))
-manager = plt.get_current_fig_manager()
-manager.window.showMaximized()
+
 plt.tight_layout()
 plt.show()
 
