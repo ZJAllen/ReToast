@@ -38,6 +38,12 @@ for i in range(0, temp.x[-1], 1):
 
     tempC = max31855.temperature
     currentTemp.y.append(tempC)
+
+    plt.cla()
+    plt.tight_layout()
+    plt.plot(temp.x, temp.y, label='Target Temperature')
+    plt.plot(currentTemp.x, currentTemp.y, label='Current Temperature')
+
     time.sleep(1)
 
 
