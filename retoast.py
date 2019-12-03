@@ -29,7 +29,7 @@ startTime = time.time()
 
 
 def animate(i):
-    elapsedTime = int(time.time() - startTime())
+    elapsedTime = float(int(time.time() - startTime()))
     currentTemp.x.append(elapsedTime)
 
     tempC = max31855.temperature
