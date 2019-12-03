@@ -19,15 +19,17 @@ spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
 cs = digitalio.DigitalInOut(board.D5)
 max31855 = adafruit_max31855.MAX31855(spi, cs)
 
+plt.ion()
 fig = plt.figure()
 ax = fig.add_subplot(111)
+line0, = ax.plot(temp.x, temp.y, label='Target Temperature')
 line1, = ax.plot(currentTemp.x, currentTemp.y, label='Current Temperature')
 
 plt.style.use('fivethirtyeight')
 plt.xlim([0, 250])
 plt.ylim([0, 250])
 
-plt.plot(temp.x, temp.y, label='Target Temperature')
+#plt.plot(temp.x, temp.y, label='Target Temperature')
 #plt.plot(currentTemp.x, currentTemp.y, label='Current Temperature')
 plt.legend(loc=(1.04, 0.5))
 
@@ -43,8 +45,10 @@ for i in range(0, temp.x[-1], 1):
     tempC = max31855.temperature
     currentTemp.y.append(tempC)
 
-    print(f'X: {elapsedTime}, Y: {tempC}')
-
+    print(f'X: {currentTemp.x[-1]}, Y: {currentTemp.y[-1]}')
+    
+    line1.set_xdata(currentTemp.x)
+    line1.set_ydata(currentTemp.y)
     fig.canvas.draw()
     fig.canvas.flush_events()
 
