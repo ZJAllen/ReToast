@@ -34,7 +34,7 @@ def animate(i):
 
     tempC = max31855.temperature
     currentTemp.y.append(tempC)
-
+    
     plt.cla()
     plt.plot(currentTemp.x, currentTemp.y, label='Current Temperature')
 
