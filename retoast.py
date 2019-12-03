@@ -41,6 +41,8 @@ for i in range(0, temp.x[-1], 1):
     tempC = max31855.temperature
     currentTemp.y.append(tempC)
 
+    print(f'X: {elapsedTime}, Y: {tempC}')
+
     fig.canvas.draw()
     fig.canvas.flush_events()
 
